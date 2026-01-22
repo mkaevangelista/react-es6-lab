@@ -13,10 +13,13 @@ function UserAPI() {
   }, []);
 
   return (
-    <ul>
-      {users.map(user => <li key={user.id}>{user.name}</li>)}
-    </ul>
+    <div>
+      {users.map(user => (
+        <p key={user.id}>{user.name}</p>
+      ))}
+    </div>
   );
 }
 
 export default UserAPI;
+

@@ -6,10 +6,10 @@ import Counter from './Counter'
 import UserAPI from './UserAPI'
 
 function App() {
-  // Conditional Rendering for Login
+  // Step 6: Conditional Rendering (simulate login)
   const isLoggedIn = true;
 
-  // ES6 examples (console logs)
+  // Step 3: ES6 examples (console logs)
   const names = ['Alice', 'Bob', 'Charlie'];
   const doubled = names.map(name => name.length * 2);
   console.log('Doubled lengths:', doubled);
@@ -18,7 +18,7 @@ function App() {
   const { name, age } = person;
   console.log('Destructured:', name, age);
 
-  // User list data
+  // Step 4: User list data
   const users = ['Alice', 'Bob', 'Charlie'];
 
   return (
@@ -35,19 +35,19 @@ function App() {
 
       <h1>Vite + React</h1>
 
-      {/* Conditional Rendering */}
+      {/* Step 6: Conditional Rendering */}
       <h2>Login Status</h2>
       {isLoggedIn ? <p>Welcome back!</p> : <p>Please log in</p>}
 
-      {/* Counter component */}
+      {/* Step 5: Counter component */}
       <h2>Counter Example</h2>
       <Counter />
 
-      {/* User List */}
+      {/* Step 4: User List (no bullets) */}
       <h2>User List</h2>
       <UserList users={users} />
 
-      {/* API Users */}
+      {/* Step 7: API Users (no bullets) */}
       <h2>API Users</h2>
       <UserAPI />
 
