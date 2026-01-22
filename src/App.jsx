@@ -3,6 +3,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import UserList from './UserList'
 import Counter from './Counter'
+import UserAPI from './UserAPI'
 
 function App() {
   // Step 6: Conditional Rendering (simulate login)
@@ -46,6 +47,10 @@ function App() {
       <h2>User List</h2>
       <UserList users={users} />
 
+      {/* Step 7: API Users */}
+      <h2>API Users</h2>
+      <UserAPI />
+
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
@@ -54,3 +59,4 @@ function App() {
 }
 
 export default App
+
