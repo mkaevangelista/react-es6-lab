@@ -1,4 +1,3 @@
-import { useState } from "react";
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -7,18 +6,10 @@ import Counter from './Counter'
 import UserAPI from './UserAPI'
 
 function App() {
-  // 🔹 LOGIN STATE (replaces the fake isLoggedIn = true)
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [username, setUsername] = useState("");
+  // Step 6: Conditional Rendering (simulate login)
+  const isLoggedIn = true;
 
-  const handleLogin = () => {
-    if (username.trim() !== "") {
-      setIsLoggedIn(true);
-      console.log(`User logged in: ${username}`); // ES6 template literal output
-    }
-  };
-
-  // 🔹 Step 3: ES6 examples (console logs)
+  // Step 3: ES6 examples (console logs)
   const names = ['Alice', 'Bob', 'Charlie'];
   const doubled = names.map(name => name.length * 2);
   console.log('Doubled lengths:', doubled);
@@ -27,7 +18,7 @@ function App() {
   const { name, age } = person;
   console.log('Destructured:', name, age);
 
-  // 🔹 Step 4: User list data
+  // Step 4: User list data
   const users = ['Alice', 'Bob', 'Charlie'];
 
   return (
@@ -44,41 +35,21 @@ function App() {
 
       <h1>Vite + React</h1>
 
-      {/* 🔹 LOGIN SECTION (NEW FEATURE) */}
-      <h2>Login</h2>
-      {!isLoggedIn ? (
-        <div>
-          <input
-            type="text"
-            placeholder="Enter username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <button onClick={handleLogin}>Login</button>
-          <p>Please log in</p>
-        </div>
-      ) : (
-        <p>Welcome back, {username}! 🎉</p>
-      )}
+      {/* Step 6: Conditional Rendering */}
+      <h2>Login Status</h2>
+      {isLoggedIn ? <p>Welcome back!</p> : <p>Please log in</p>}
 
-      <hr />
+      {/* Step 5: Counter component */}
+      <h2>Counter Example</h2>
+      <Counter />
 
-      {/* 🔹 SHOW FEATURES ONLY AFTER LOGIN */}
-      {isLoggedIn && (
-        <>
-          {/* Step 5: Counter component */}
-          <h2>Counter Example</h2>
-          <Counter />
+      {/* Step 4: User List (no bullets) */}
+      <h2>User List</h2>
+      <UserList users={users} />
 
-          {/* Step 4: User List (no bullets) */}
-          <h2>User List</h2>
-          <UserList users={users} />
-
-          {/* Step 7: API Users (no bullets) */}
-          <h2>API Users</h2>
-          <UserAPI />
-        </>
-      )}
+      {/* Step 7: API Users (no bullets) */}
+      <h2>API Users</h2>
+      <UserAPI />
 
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
@@ -88,3 +59,4 @@ function App() {
 }
 
 export default App
+
