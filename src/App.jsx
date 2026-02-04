@@ -1,39 +1,31 @@
 import { useState } from "react";
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import UserList from './UserList'
-import Counter from './Counter'
-import UserAPI from './UserAPI'
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import LoginForm from "./LoginForm";
+import Dashboard from "./Dashboard";
 
 function App() {
-  // 🔹 LOGIN STATE (replaces the fake isLoggedIn = true)
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
 
   const handleLogin = () => {
     if (username.trim() !== "") {
       setIsLoggedIn(true);
-      console.log(`User logged in: ${username}`); // ES6 template literal output
+      console.log(`User logged in: ${username}`);
     }
   };
 
-  // 🔹 Step 3: ES6 examples (console logs)
-  const names = ['Alice', 'Bob', 'Charlie'];
-  const doubled = names.map(name => name.length * 2);
-  console.log('Doubled lengths:', doubled);
-
-  const person = { name: 'Alice', age: 25 };
-  const { name, age } = person;
-  console.log('Destructured:', name, age);
-
-  // 🔹 Step 4: User list data
-  const users = ['Alice', 'Bob', 'Charlie'];
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setUsername("");
+    console.log("User logged out");
+  };
 
   return (
-    <>
+    <div className="app-container fade-in">
       {/* Logos */}
-      <div>
+      <div className="logo-container">
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -42,49 +34,19 @@ function App() {
         </a>
       </div>
 
-      <h1>Vite + React</h1>
+      <h1 className="title">Vite + React Login</h1>
 
-      {/* 🔹 LOGIN SECTION (NEW FEATURE) */}
-      <h2>Login</h2>
       {!isLoggedIn ? (
-        <div>
-          <input
-            type="text"
-            placeholder="Enter username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <button onClick={handleLogin}>Login</button>
-          <p>Please log in</p>
-        </div>
+        <LoginForm
+          username={username}
+          setUsername={setUsername}
+          onLogin={handleLogin}
+        />
       ) : (
-        <p>Welcome back, {username}! 🎉</p>
+        <Dashboard username={username} onLogout={handleLogout} />
       )}
-
-      <hr />
-
-      {/* 🔹 SHOW FEATURES ONLY AFTER LOGIN */}
-      {isLoggedIn && (
-        <>
-          {/* Step 5: Counter component */}
-          <h2>Counter Example</h2>
-          <Counter />
-
-          {/* Step 4: User List (no bullets) */}
-          <h2>User List</h2>
-          <UserList users={users} />
-
-          {/* Step 7: API Users (no bullets) */}
-          <h2>API Users</h2>
-          <UserAPI />
-        </>
-      )}
-
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
